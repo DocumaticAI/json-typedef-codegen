@@ -26,14 +26,14 @@ jobs:
             runs_on: ubuntu-latest
             artifact: jtd-codegen.exe
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install Rust
         run: rustup target add ${{ matrix.target }}
       - run: cargo install cross
       - run: cross build --package jtd_codegen_cli --release --target=$TARGET
         env:
           TARGET: ${{ matrix.target }}
-      - run: zip --junk-paths $TARGET.zip target/$TARGET/release/$ARTIFACT
+      - run: tar czf $TARGET.tar.gz target/$TARGET/release/$ARTIFACT
         env:
           TARGET: ${{ matrix.target }}
           ARTIFACT: ${{ matrix.artifact }}
@@ -42,6 +42,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ matrix.target }}.zip
-          asset_name: ${{ matrix.target }}.zip
-          asset_content_type: application/zip
+          asset_path: ${{ matrix.target }}.tar.gz
+          asset_name: ${{ matrix.target }}.tar.gz
+          asset_content_type: application/gzip
