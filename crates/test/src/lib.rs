@@ -116,6 +116,7 @@ pub fn assert_std_test_case<T: Target>(
 fn generate_code<T: Target>(target: &T, schema: &Schema) -> (tempfile::TempDir, String) {
     // The dir where we'll do all of our work.
     let tempdir = tempfile::tempdir().expect("create temp dir");
+    println!("Generating code into: {}", tempdir.path().display());
 
     // The dir where we'll generate code into.
     let codegen_dir = tempdir.path().join("gen");

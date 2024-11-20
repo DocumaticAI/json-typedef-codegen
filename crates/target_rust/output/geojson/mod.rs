@@ -92,7 +92,7 @@ pub type BoundingBox = Vec<f64>;
 ///     elements in this array is determined by the type of geometry.
 ///     GeoJSON processors MAY interpret Geometry objects with empty
 ///     "coordinates" arrays as null objects.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "type")]
 pub enum GeojsonObject {
     #[serde(rename = "Feature")]
@@ -137,7 +137,7 @@ pub enum GeojsonObject {
 /// o  A Feature object has a member with the name "properties".  The
 ///     value of the properties member is an object (any JSON object or
 ///     a JSON null value).
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectFeature {
     /// The GeoJSON specification requires that these elements be
     /// GeoJSON geometry objects, but such a constraint can't be
@@ -162,7 +162,7 @@ pub struct GeojsonObjectFeature {
 /// with the name "features".  The value of "features" is a JSON array.
 /// Each element of the array is a Feature object as defined above.  It
 /// is possible for this array to be empty.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectFeatureCollection {
     #[serde(rename = "features")]
     pub features: Vec<GeojsonObject>,
@@ -195,7 +195,7 @@ pub struct GeojsonObjectFeatureCollection {
 /// when that single part or a single object of multipart type
 /// (MultiPoint, MultiLineString, or MultiPolygon) could be used
 /// instead.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectGeometryCollection {
     #[serde(rename = "geometries")]
     pub geometries: Vec<GeojsonObject>,
@@ -207,7 +207,7 @@ pub struct GeojsonObjectGeometryCollection {
 
 /// For type "LineString", the "coordinates" member is an array of two
 /// or more positions.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectLineString {
     #[serde(rename = "coordinates")]
     pub coordinates: Vec<Position>,
@@ -219,7 +219,7 @@ pub struct GeojsonObjectLineString {
 
 /// For type "MultiLineString", the "coordinates" member is an array of
 /// LineString coordinate arrays.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectMultiLineString {
     #[serde(rename = "coordinates")]
     pub coordinates: Vec<Position>,
@@ -231,7 +231,7 @@ pub struct GeojsonObjectMultiLineString {
 
 /// For type "MultiPoint", the "coordinates" member is an array of
 /// positions.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectMultiPoint {
     #[serde(rename = "coordinates")]
     pub coordinates: Vec<Position>,
@@ -243,7 +243,7 @@ pub struct GeojsonObjectMultiPoint {
 
 /// For type "MultiPolygon", the "coordinates" member is an array of
 /// Polygon coordinate arrays.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectMultiPolygon {
     #[serde(rename = "coordinates")]
     pub coordinates: Vec<LinearRing>,
@@ -254,7 +254,7 @@ pub struct GeojsonObjectMultiPolygon {
 }
 
 /// For type "Point", the "coordinates" member is a single position.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectPoint {
     #[serde(rename = "coordinates")]
     pub coordinates: Position,
@@ -266,7 +266,7 @@ pub struct GeojsonObjectPoint {
 
 /// For type "Polygon", the "coordinates" member MUST be an array of
 /// linear ring coordinate arrays.
-#[derive(Serialize, Deserialize, Debug, Clone)]Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GeojsonObjectPolygon {
     #[serde(rename = "coordinates")]
     pub coordinates: Vec<LinearRing>,
