@@ -27,9 +27,8 @@ jobs:
             artifact: jtd-codegen.exe
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
+      - name: Install Rust
+        run: rustup target add ${{ matrix.target }}
       - run: cargo install cross
       - run: cross build --package jtd_codegen_cli --release --target=$TARGET
         env:
