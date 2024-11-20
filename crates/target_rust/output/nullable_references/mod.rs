@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Root {
     #[serde(rename = "notnull_ref_notnull_string")]
     pub notnullRefNotnullString: NotnullRefNotnullString,

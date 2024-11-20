@@ -2,14 +2,14 @@
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "foo")]
 pub enum Root {
     #[serde(rename = "bar")]
     Bar(RootBar),
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct RootBar {
     #[serde(rename = "baz")]
     #[serde(skip_serializing_if = "Option::is_none")]

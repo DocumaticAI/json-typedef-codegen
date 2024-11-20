@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "foo")]
 pub enum Root {
     #[serde(rename = "BAR_BAZ")]
@@ -12,13 +12,13 @@ pub enum Root {
     Quux(RootQuux),
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct RootBarBaz {
     #[serde(rename = "baz")]
     pub baz: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct RootQuux {
     #[serde(rename = "quuz")]
     pub quuz: String,

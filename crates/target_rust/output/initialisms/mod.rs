@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct RootNestedIdInitialism {
     #[serde(rename = "json")]
     pub json: String,
@@ -11,7 +11,7 @@ pub struct RootNestedIdInitialism {
     pub normalword: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Root {
     #[serde(rename = "http")]
     pub http: String,

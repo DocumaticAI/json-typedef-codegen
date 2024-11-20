@@ -202,7 +202,7 @@ impl jtd_codegen::target::Target for Target {
 
                 writeln!(out)?;
                 write!(out, "{}", description(&metadata, 0))?;
-                writeln!(out, "#[derive(Serialize, Deserialize)]")?;
+                writeln!(out, "#[derive(Serialize, Deserialize, Debug, Clone)]")?;
                 writeln!(out, "pub enum {} {{", name)?;
 
                 for (index, member) in members.into_iter().enumerate() {
@@ -289,7 +289,7 @@ impl jtd_codegen::target::Target for Target {
 
                 writeln!(out)?;
                 write!(out, "{}", description(&metadata, 0))?;
-                writeln!(out, "#[derive(Serialize, Deserialize)]")?;
+                writeln!(out, "#[derive(Serialize, Deserialize, Debug, Clone)]")?;
                 writeln!(out, "#[serde(tag = {:?})]", tag_json_name)?;
                 writeln!(out, "pub enum {} {{", name)?;
 
@@ -330,7 +330,7 @@ impl jtd_codegen::target::Target for Target {
 
                 writeln!(out)?;
                 write!(out, "{}", description(&metadata, 0))?;
-                writeln!(out, "#[derive(Serialize, Deserialize)]")?;
+                writeln!(out, "#[derive(Serialize, Deserialize, Debug, Clone)]")?;
 
                 if fields.is_empty() {
                     writeln!(out, "pub struct {} {{}}", name)?;
