@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// A description for discriminator
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "foo")]
 pub enum RootDiscriminatorWithDescription {
     #[serde(rename = "bar")]
@@ -11,11 +11,11 @@ pub enum RootDiscriminatorWithDescription {
 }
 
 /// A description for discriminator variant
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct RootDiscriminatorWithDescriptionBar {}
 
 /// A description for enum
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum RootEnumWithDescription {
     /// A description for X
     #[serde(rename = "X")]
@@ -31,10 +31,10 @@ pub enum RootEnumWithDescription {
 }
 
 /// A description for properties
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct RootPropertiesWithDescription {}
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Root {
     /// A description for discriminator
     #[serde(rename = "discriminator_with_description")]

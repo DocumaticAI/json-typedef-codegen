@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Root {
     #[serde(rename = "bar")]
     #[serde(skip_serializing_if = "Option::is_none")]

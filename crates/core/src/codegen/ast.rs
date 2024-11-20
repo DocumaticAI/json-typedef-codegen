@@ -32,6 +32,7 @@ impl SchemaAst {
 #[derive(Debug)]
 pub enum Ast {
     Ref {
+        #[allow(dead_code)]
         metadata: Metadata,
         definition: String,
     },
