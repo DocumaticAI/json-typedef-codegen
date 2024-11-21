@@ -37,7 +37,7 @@ jobs:
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
       - run: echo "ARCHIVE=jetted-$VERSION-${{ matrix.target }}.tar.gz" >> $GITHUB_ENV
       - run: cross build --package jetted --release --target=${{ matrix.target }}
-      - run: tar czf $ARCHIVE target/${{ matrix.target }}/release/jetted${{ matrix.extension }}
+      - run: tar czf $ARCHIVE -C target/${{ matrix.target }}/release jetted${{ matrix.extension }}
       - uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
