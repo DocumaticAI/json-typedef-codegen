@@ -4,25 +4,7 @@ on:
 
 jobs:
   test:
-    strategy:
-      matrix:
-        package:
-          - jetted
-          - jetted_target_csharp_system_text
-          - jetted_target_go
-          - jetted_target_java_jackson
-          - jetted_target_python
-          - jetted_target_ruby
-          - jetted_target_ruby_sig
-          - jetted_target_rust
-          - jetted_target_typescript
-          - jetted_test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-      - run: cargo test --package=$PACKAGE
-        env:
-          PACKAGE: ${{ matrix.package }}
+      - uses: actions/checkout@v4
+      - run: cargo test
