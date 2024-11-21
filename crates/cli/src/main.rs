@@ -23,7 +23,7 @@ fn main() -> Result<()> {
 
     let input = matches.value_of("schema").unwrap();
 
-    // Determine the desired root name to pass to jtd_codegen. If the user has
+    // Determine the desired root name to pass to jetted. If the user has
     // supplied root-name, we'll use that. Otherwise, we'll infer a desired root
     // name from the name of the input file.
     let root_name =
@@ -54,10 +54,10 @@ fn main() -> Result<()> {
             .unwrap()
             .to_owned();
 
-        let target = jtd_codegen_target_csharp_system_text::Target::new(namespace);
+        let target = jetted_target_csharp_system_text::Target::new(namespace);
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate C# + System.Text.Json code")?;
 
         log.finish("C# + System.Text.Json", &codegen_info);
@@ -68,10 +68,10 @@ fn main() -> Result<()> {
 
         let package = matches.value_of("go-package").unwrap().to_owned();
 
-        let target = jtd_codegen_target_go::Target::new(package);
+        let target = jetted_target_go::Target::new(package);
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate Go code")?;
 
         log.finish("Go", &codegen_info);
@@ -82,10 +82,10 @@ fn main() -> Result<()> {
 
         let package = matches.value_of("java-jackson-package").unwrap().to_owned();
 
-        let target = jtd_codegen_target_java_jackson::Target::new(package);
+        let target = jetted_target_java_jackson::Target::new(package);
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate Java + Jackson code")?;
 
         log.finish("Java + Jackson", &codegen_info);
@@ -94,10 +94,10 @@ fn main() -> Result<()> {
     if let Some(out_dir) = matches.value_of("python-out") {
         log.start("Python", out_dir);
 
-        let target = jtd_codegen_target_python::Target::new();
+        let target = jetted_target_python::Target::new();
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate Python code")?;
 
         log.finish("Python", &codegen_info);
@@ -108,10 +108,10 @@ fn main() -> Result<()> {
 
         let module = matches.value_of("ruby-module").unwrap().to_owned();
 
-        let target = jtd_codegen_target_ruby::Target::new(module);
+        let target = jetted_target_ruby::Target::new(module);
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate Ruby code")?;
 
         log.finish("Ruby", &codegen_info);
@@ -122,10 +122,10 @@ fn main() -> Result<()> {
 
         let module = matches.value_of("ruby-sig-module").unwrap().to_owned();
 
-        let target = jtd_codegen_target_ruby_sig::Target::new(module);
+        let target = jetted_target_ruby_sig::Target::new(module);
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate Ruby Signatures code")?;
 
         log.finish("Ruby Signatures", &codegen_info);
@@ -134,10 +134,10 @@ fn main() -> Result<()> {
     if let Some(out_dir) = matches.value_of("rust-out") {
         log.start("Rust", out_dir);
 
-        let target = jtd_codegen_target_rust::Target::new();
+        let target = jetted_target_rust::Target::new();
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate Rust code")?;
 
         log.finish("Rust", &codegen_info);
@@ -146,10 +146,10 @@ fn main() -> Result<()> {
     if let Some(out_dir) = matches.value_of("typescript-out") {
         log.start("TypeScript", out_dir);
 
-        let target = jtd_codegen_target_typescript::Target::new();
+        let target = jetted_target_typescript::Target::new();
 
         let codegen_info =
-            jtd_codegen::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
+            jetted_core::codegen(&target, root_name.clone(), &schema, &Path::new(out_dir))
                 .with_context(|| "Failed to generate TypeScript code")?;
 
         log.finish("TypeScript", &codegen_info);
@@ -161,7 +161,7 @@ fn main() -> Result<()> {
 
 trait Log {
     fn start(&mut self, target: &str, out_dir: &str);
-    fn finish(&mut self, target: &str, info: &jtd_codegen::codegen::CodegenInfo);
+    fn finish(&mut self, target: &str, info: &jetted_core::codegen::CodegenInfo);
     fn flush(&mut self);
 }
 
@@ -177,7 +177,7 @@ impl Log for PrettyLog {
         );
     }
 
-    fn finish(&mut self, target: &str, info: &jtd_codegen::codegen::CodegenInfo) {
+    fn finish(&mut self, target: &str, info: &jetted_core::codegen::CodegenInfo) {
         use colored::*;
 
         println!("📦 Generated {} code.", target.green().bold());
@@ -203,7 +203,7 @@ impl Log for MinimalLog {
         eprintln!("{}: writing to: {}", target, out_dir);
     }
 
-    fn finish(&mut self, target: &str, info: &jtd_codegen::codegen::CodegenInfo) {
+    fn finish(&mut self, target: &str, info: &jetted_core::codegen::CodegenInfo) {
         println!("{}: root: {}", target, &info.root_name);
         for (definition_name, type_name) in &info.definition_names {
             println!("{}: definition: {}: {}", target, definition_name, type_name);
@@ -234,7 +234,7 @@ impl Log for JsonLog {
         );
     }
 
-    fn finish(&mut self, target: &str, info: &jtd_codegen::codegen::CodegenInfo) {
+    fn finish(&mut self, target: &str, info: &jetted_core::codegen::CodegenInfo) {
         let entry = self.0.get_mut(target).unwrap();
 
         entry.root_name = info.root_name.clone();

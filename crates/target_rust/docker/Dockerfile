@@ -10,8 +10,8 @@ RUN echo 'fn main() {}' > /work/src/main.rs
 RUN cargo build
 
 COPY /main.rs /work/src/main.rs
-COPY /gen /work/src/jtd_codegen_e2e/
+COPY /gen /work/src/jetted_e2e/
 RUN sed -i -e "s/MAIN/$MAIN/g" /work/src/main.rs
 
 RUN cargo build
-ENTRYPOINT target/debug/jtd_e2e_test
+ENTRYPOINT target/debug/jetted_e2e_test

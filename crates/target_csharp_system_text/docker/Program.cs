@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace JtdCodegenE2E
+namespace JettedE2E
 {
     class Program
     {

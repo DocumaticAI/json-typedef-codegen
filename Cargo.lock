@@ -188,6 +188,134 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc6f3ad7b9d11a0c00842ff8de1b60ee58661048eb8049ed33c73594f359d7e6"
 
 [[package]]
+name = "jetted"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "colored",
+ "jetted_core",
+ "jetted_target_csharp_system_text",
+ "jetted_target_go",
+ "jetted_target_java_jackson",
+ "jetted_target_python",
+ "jetted_target_ruby",
+ "jetted_target_ruby_sig",
+ "jetted_target_rust",
+ "jetted_target_typescript",
+ "jtd",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_core"
+version = "0.1.0"
+dependencies = [
+ "Inflector",
+ "jtd",
+ "serde_json",
+ "textwrap 0.13.1",
+ "thiserror",
+]
+
+[[package]]
+name = "jetted_target_csharp_system_text"
+version = "0.1.0"
+dependencies = [
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_target_go"
+version = "0.1.0"
+dependencies = [
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_target_java_jackson"
+version = "0.1.0"
+dependencies = [
+ "askama",
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_target_python"
+version = "0.1.0"
+dependencies = [
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_target_ruby"
+version = "0.1.0"
+dependencies = [
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_target_ruby_sig"
+version = "0.1.0"
+dependencies = [
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_target_rust"
+version = "0.1.0"
+dependencies = [
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_target_typescript"
+version = "0.1.0"
+dependencies = [
+ "jetted_core",
+ "jetted_test",
+ "lazy_static",
+ "regex",
+ "serde_json",
+]
+
+[[package]]
+name = "jetted_test"
+version = "0.1.0"
+dependencies = [
+ "difference",
+ "jetted_core",
+ "jtd",
+ "jtd-fuzz",
+ "rand",
+ "rand_pcg",
+ "serde_json",
+ "tempfile",
+]
+
+[[package]]
 name = "jtd"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -196,17 +324,6 @@ dependencies = [
  "chrono",
  "serde",
  "serde_json",
-]
-
-[[package]]
-name = "jtd-codegen"
-version = "0.1.0"
-dependencies = [
- "Inflector",
- "jtd",
- "serde_json",
- "textwrap 0.13.1",
- "thiserror",
 ]
 
 [[package]]
@@ -222,123 +339,6 @@ dependencies = [
  "rand",
  "rand_pcg",
  "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_cli"
-version = "0.4.1"
-dependencies = [
- "anyhow",
- "clap",
- "colored",
- "jtd",
- "jtd-codegen",
- "jtd_codegen_target_csharp_system_text",
- "jtd_codegen_target_go",
- "jtd_codegen_target_java_jackson",
- "jtd_codegen_target_python",
- "jtd_codegen_target_ruby",
- "jtd_codegen_target_ruby_sig",
- "jtd_codegen_target_rust",
- "jtd_codegen_target_typescript",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_csharp_system_text"
-version = "0.2.1"
-dependencies = [
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_go"
-version = "0.2.1"
-dependencies = [
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_java_jackson"
-version = "0.2.1"
-dependencies = [
- "askama",
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_python"
-version = "0.3.1"
-dependencies = [
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_ruby"
-version = "0.1.1"
-dependencies = [
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_ruby_sig"
-version = "0.1.1"
-dependencies = [
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_rust"
-version = "0.2.1"
-dependencies = [
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_target_typescript"
-version = "0.2.1"
-dependencies = [
- "jtd-codegen",
- "jtd_codegen_test",
- "lazy_static",
- "regex",
- "serde_json",
-]
-
-[[package]]
-name = "jtd_codegen_test"
-version = "0.1.0"
-dependencies = [
- "difference",
- "jtd",
- "jtd-codegen",
- "jtd-fuzz",
- "rand",
- "rand_pcg",
- "serde_json",
- "tempfile",
 ]
 
 [[package]]

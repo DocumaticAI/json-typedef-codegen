@@ -1,7 +1,7 @@
 mod pretty_diff;
 
+use jetted_core::target::Target;
 use jtd::{Schema, SerdeSchema, Validator};
-use jtd_codegen::target::Target;
 use rand::SeedableRng;
 use rand_pcg::Pcg32;
 use serde_json::Value;
@@ -123,7 +123,7 @@ fn generate_code<T: Target>(target: &T, schema: &Schema) -> (tempfile::TempDir, 
     fs::create_dir(&codegen_dir).expect("create gen dir");
 
     // Generate code into codegen_dir.
-    let codegen_info = jtd_codegen::codegen(target, "Root".to_owned(), &schema, &codegen_dir)
+    let codegen_info = jetted_core::codegen(target, "Root".to_owned(), &schema, &codegen_dir)
         .expect("generate code");
 
     (tempdir, codegen_info.root_name)
@@ -257,7 +257,7 @@ fn assert_stable(target_crate_base_dir: &str, test_case_name: &str, tempdir: &te
     // If there is no reference dir for this crate, then we will make the
     // tempdir be the new reference output.
     //
-    // In effect, this means jtd-codegen developers can "opt into" a change in
+    // In effect, this means jetted developers can "opt into" a change in
     // stability of output by deleting reference dirs that are no longer
     // relevant.
     //

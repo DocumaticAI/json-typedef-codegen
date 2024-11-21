@@ -6,4 +6,4 @@
 // console.log(JSON.stringify(JSON.parse(stdin) as MAIN))
 //
 // Is rather pointless.
-import { MAIN } from "./jtd_codegen_e2e";
+import { MAIN } from "./jetted_e2e";

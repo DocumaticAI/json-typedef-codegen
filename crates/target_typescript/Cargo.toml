@@ -1,14 +1,17 @@
 [package]
-name = "jtd_codegen_target_typescript"
-version = "0.2.1"
-authors = ["Ulysse Carion <ulysse@segment.com>"]
+name = "jetted_target_typescript"
+version = "0.1.0"
+authors = [
+    "Isaac Harris-Holt <isaac@documatic.com>",
+    "Ulysse Carion <ulysse@segment.com>",
+]
 edition = "2018"
 
 [dependencies]
-jtd-codegen = { path = "../core" }
+jetted_core = { path = "../core" }
 lazy_static = "1.4.0"
 serde_json = "1.0"
 regex = "1"
 
 [dev-dependencies]
-jtd_codegen_test = { path = "../test" }
+jetted_test = { path = "../test" }
