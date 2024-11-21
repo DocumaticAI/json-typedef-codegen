@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = map[string]string
+type Values = map[string]string

@@ -5,7 +5,7 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class EmptyAndNonasciiEnumValues
     attr_accessor :value
 
     def initialize(value)

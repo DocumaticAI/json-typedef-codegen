@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional, Type, Union, get_args, get_origin
 
 
 @dataclass
-class RootDiscriminatorWithDescription:
+class DescriptionDiscriminatorWithDescription:
     """
     A description for discriminator
     """
@@ -16,9 +16,9 @@ class RootDiscriminatorWithDescription:
     foo: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootDiscriminatorWithDescription':
-        variants: Dict[str, Type[RootDiscriminatorWithDescription]] = {
-            "bar": RootDiscriminatorWithDescriptionBar,
+    def from_json_data(cls, data: Any) -> 'DescriptionDiscriminatorWithDescription':
+        variants: Dict[str, Type[DescriptionDiscriminatorWithDescription]] = {
+            "bar": DescriptionDiscriminatorWithDescriptionBar,
         }
 
         return variants[data["foo"]].from_json_data(data)
@@ -27,14 +27,14 @@ class RootDiscriminatorWithDescription:
         pass
 
 @dataclass
-class RootDiscriminatorWithDescriptionBar(RootDiscriminatorWithDescription):
+class DescriptionDiscriminatorWithDescriptionBar(DescriptionDiscriminatorWithDescription):
     """
     A description for discriminator variant
     """
 
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootDiscriminatorWithDescriptionBar':
+    def from_json_data(cls, data: Any) -> 'DescriptionDiscriminatorWithDescriptionBar':
         return cls(
             "bar",
         )
@@ -43,7 +43,7 @@ class RootDiscriminatorWithDescriptionBar(RootDiscriminatorWithDescription):
         data = { "foo": "bar" }
         return data
 
-class RootEnumWithDescription(Enum):
+class DescriptionEnumWithDescription(Enum):
     """
     A description for enum
     """
@@ -64,21 +64,21 @@ class RootEnumWithDescription(Enum):
     """
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootEnumWithDescription':
+    def from_json_data(cls, data: Any) -> 'DescriptionEnumWithDescription':
         return cls(data)
 
     def to_json_data(self) -> Any:
         return self.value
 
 @dataclass
-class RootPropertiesWithDescription:
+class DescriptionPropertiesWithDescription:
     """
     A description for properties
     """
 
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootPropertiesWithDescription':
+    def from_json_data(cls, data: Any) -> 'DescriptionPropertiesWithDescription':
         return cls(
         )
 
@@ -87,13 +87,13 @@ class RootPropertiesWithDescription:
         return data
 
 @dataclass
-class Root:
-    discriminator_with_description: 'RootDiscriminatorWithDescription'
+class Description:
+    discriminator_with_description: 'DescriptionDiscriminatorWithDescription'
     """
     A description for discriminator
     """
 
-    enum_with_description: 'RootEnumWithDescription'
+    enum_with_description: 'DescriptionEnumWithDescription'
     """
     A description for enum
     """
@@ -107,7 +107,7 @@ class Root:
     the common people,
     """
 
-    properties_with_description: 'RootPropertiesWithDescription'
+    properties_with_description: 'DescriptionPropertiesWithDescription'
     """
     A description for properties
     """
@@ -124,12 +124,12 @@ class Root:
 
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'Description':
         return cls(
-            _from_json_data(RootDiscriminatorWithDescription, data.get("discriminator_with_description")),
-            _from_json_data(RootEnumWithDescription, data.get("enum_with_description")),
+            _from_json_data(DescriptionDiscriminatorWithDescription, data.get("discriminator_with_description")),
+            _from_json_data(DescriptionEnumWithDescription, data.get("enum_with_description")),
             _from_json_data(str, data.get("long_description")),
-            _from_json_data(RootPropertiesWithDescription, data.get("properties_with_description")),
+            _from_json_data(DescriptionPropertiesWithDescription, data.get("properties_with_description")),
             _from_json_data(Baz, data.get("ref_with_description")),
             _from_json_data(str, data.get("string_with_description")),
         )
@@ -216,4 +216,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

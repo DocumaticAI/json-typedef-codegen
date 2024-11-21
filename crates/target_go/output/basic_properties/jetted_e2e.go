@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root struct {
+type BasicProperties struct {
 	Bar string `json:"bar"`
 
 	Baz []bool `json:"baz"`

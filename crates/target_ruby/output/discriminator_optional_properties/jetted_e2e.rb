@@ -5,22 +5,22 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class DiscriminatorOptionalProperties
     attr_accessor :foo
 
     def self.from_json_data(data)
       {
-        "bar" => RootBar,
+        "bar" => DiscriminatorOptionalPropertiesBar,
       }[data["foo"]].from_json_data(data)
     end
   end
 
-  class RootBar < Root
+  class DiscriminatorOptionalPropertiesBar < DiscriminatorOptionalProperties
     attr_accessor :baz
     attr_accessor :quux
 
     def self.from_json_data(data)
-      out = RootBar.new
+      out = DiscriminatorOptionalPropertiesBar.new
       out.foo = "bar"
       out.baz = JettedE2E::from_json_data(Array[String], data["baz"])
       out.quux = JettedE2E::from_json_data(TrueClass, data["quux"])

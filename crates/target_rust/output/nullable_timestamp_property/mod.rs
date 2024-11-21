@@ -4,7 +4,7 @@ use chrono::{DateTime, FixedOffset};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct NullableTimestampProperty {
     #[serde(rename = "foo")]
     pub foo: Option<Box<DateTime<FixedOffset>>>,
 }

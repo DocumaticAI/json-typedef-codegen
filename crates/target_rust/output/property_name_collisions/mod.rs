@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct PropertyNameCollisions {
     #[serde(rename = "Foo")]
     pub foo: String,
 

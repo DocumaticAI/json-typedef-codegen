@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root = string
+type EmptyAndNonasciiDefinitions = string
 
 type DefaultName = string
 

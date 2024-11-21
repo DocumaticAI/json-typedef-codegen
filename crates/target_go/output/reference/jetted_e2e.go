@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root = Foo
+type Reference = Foo
 
 type Bar = Baz
 

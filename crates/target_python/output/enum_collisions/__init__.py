@@ -7,24 +7,24 @@ from enum import Enum
 from typing import Any, Dict, Optional, Union, get_args, get_origin
 
 
-class RootFooBar(Enum):
+class EnumCollisionsFooBar(Enum):
     X = "x"
     Y = "y"
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootFooBar':
+    def from_json_data(cls, data: Any) -> 'EnumCollisionsFooBar':
         return cls(data)
 
     def to_json_data(self) -> Any:
         return self.value
 
 @dataclass
-class RootFoo:
-    bar: 'RootFooBar'
+class EnumCollisionsFoo:
+    bar: 'EnumCollisionsFooBar'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootFoo':
+    def from_json_data(cls, data: Any) -> 'EnumCollisionsFoo':
         return cls(
-            _from_json_data(RootFooBar, data.get("bar")),
+            _from_json_data(EnumCollisionsFooBar, data.get("bar")),
         )
 
     def to_json_data(self) -> Any:
@@ -32,26 +32,26 @@ class RootFoo:
         data["bar"] = _to_json_data(self.bar)
         return data
 
-class RootFooBar0(Enum):
+class EnumCollisionsFooBar0(Enum):
     X = "x"
     Y = "y"
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootFooBar0':
+    def from_json_data(cls, data: Any) -> 'EnumCollisionsFooBar0':
         return cls(data)
 
     def to_json_data(self) -> Any:
         return self.value
 
 @dataclass
-class Root:
-    foo: 'RootFoo'
-    foo_bar: 'RootFooBar0'
+class EnumCollisions:
+    foo: 'EnumCollisionsFoo'
+    foo_bar: 'EnumCollisionsFooBar0'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'EnumCollisions':
         return cls(
-            _from_json_data(RootFoo, data.get("foo")),
-            _from_json_data(RootFooBar0, data.get("foo_bar")),
+            _from_json_data(EnumCollisionsFoo, data.get("foo")),
+            _from_json_data(EnumCollisionsFooBar0, data.get("foo_bar")),
         )
 
     def to_json_data(self) -> Any:
@@ -117,4 +117,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

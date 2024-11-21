@@ -5,22 +5,22 @@ require 'time'
 
 module JettedE2E
 
-  class Root0
+  class NullableDiscriminator0
     attr_accessor :foo
 
     def self.from_json_data(data)
       {
-        "bar" => RootBar,
-        "quux" => RootQuux,
+        "bar" => NullableDiscriminatorBar,
+        "quux" => NullableDiscriminatorQuux,
       }[data["foo"]].from_json_data(data)
     end
   end
 
-  class RootBar < Root0
+  class NullableDiscriminatorBar < NullableDiscriminator0
     attr_accessor :baz
 
     def self.from_json_data(data)
-      out = RootBar.new
+      out = NullableDiscriminatorBar.new
       out.foo = "bar"
       out.baz = JettedE2E::from_json_data(String, data["baz"])
       out
@@ -33,11 +33,11 @@ module JettedE2E
     end
   end
 
-  class RootQuux < Root0
+  class NullableDiscriminatorQuux < NullableDiscriminator0
     attr_accessor :quuz
 
     def self.from_json_data(data)
-      out = RootQuux.new
+      out = NullableDiscriminatorQuux.new
       out.foo = "quux"
       out.quuz = JettedE2E::from_json_data(String, data["quuz"])
       out
@@ -50,12 +50,12 @@ module JettedE2E
     end
   end
 
-  class Root
+  class NullableDiscriminator
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = Root.new
-      out.value = JettedE2E.from_json_data(Root0, data)
+      out = NullableDiscriminator.new
+      out.value = JettedE2E.from_json_data(NullableDiscriminator0, data)
       out
     end
 

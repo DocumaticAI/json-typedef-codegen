@@ -5,10 +5,10 @@ require 'time'
 
 module JettedE2E
 
-  class RootOverrideTypeDiscriminatorBaz < Object
+  class CustomOverridesOverrideTypeDiscriminatorBaz < Object
 
     def self.from_json_data(data)
-      out = RootOverrideTypeDiscriminatorBaz.new
+      out = CustomOverridesOverrideTypeDiscriminatorBaz.new
       out.foo = "baz"
       out
     end
@@ -19,7 +19,7 @@ module JettedE2E
     end
   end
 
-  class Root
+  class CustomOverrides
     attr_accessor :override_elements_container
     attr_accessor :override_type_discriminator
     attr_accessor :override_type_enum
@@ -28,7 +28,7 @@ module JettedE2E
     attr_accessor :override_values_container
 
     def self.from_json_data(data)
-      out = Root.new
+      out = CustomOverrides.new
       out.override_elements_container = JettedE2E::from_json_data(Array[String], data["override_elements_container"])
       out.override_type_discriminator = JettedE2E::from_json_data(Object, data["override_type_discriminator"])
       out.override_type_enum = JettedE2E::from_json_data(Object, data["override_type_enum"])

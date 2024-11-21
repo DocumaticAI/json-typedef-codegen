@@ -4,6 +4,6 @@ package jetted_e2e
 
 import "time"
 
-type Root struct {
+type NullableTimestampProperty struct {
 	Foo *time.Time `json:"foo"`
 }

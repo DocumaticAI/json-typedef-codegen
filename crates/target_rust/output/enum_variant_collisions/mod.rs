@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub enum Root {
+pub enum EnumVariantCollisions {
     #[serde(rename = "FOO")]
     Foo,
 

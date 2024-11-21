@@ -7,13 +7,13 @@ from typing import Any, Dict, List, Optional, Type, Union, get_args, get_origin
 
 
 @dataclass
-class Root:
+class DiscriminatorOptionalProperties:
     foo: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
-        variants: Dict[str, Type[Root]] = {
-            "bar": RootBar,
+    def from_json_data(cls, data: Any) -> 'DiscriminatorOptionalProperties':
+        variants: Dict[str, Type[DiscriminatorOptionalProperties]] = {
+            "bar": DiscriminatorOptionalPropertiesBar,
         }
 
         return variants[data["foo"]].from_json_data(data)
@@ -22,12 +22,12 @@ class Root:
         pass
 
 @dataclass
-class RootBar(Root):
+class DiscriminatorOptionalPropertiesBar(DiscriminatorOptionalProperties):
     baz: 'Optional[List[str]]'
     quux: 'Optional[bool]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootBar':
+    def from_json_data(cls, data: Any) -> 'DiscriminatorOptionalPropertiesBar':
         return cls(
             "bar",
             _from_json_data(Optional[List[str]], data.get("baz")),
@@ -99,4 +99,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

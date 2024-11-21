@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct OptionalProperties {
     #[serde(rename = "bar")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bar: Option<Box<Vec<String>>>,

@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootNestedIdInitialism {
+pub struct InitialismsNestedIdInitialism {
     #[serde(rename = "json")]
     pub json: String,
 
@@ -12,7 +12,7 @@ pub struct RootNestedIdInitialism {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct Initialisms {
     #[serde(rename = "http")]
     pub http: String,
 
@@ -20,7 +20,7 @@ pub struct Root {
     pub id: String,
 
     #[serde(rename = "nested_id_initialism")]
-    pub nestedIdInitialism: RootNestedIdInitialism,
+    pub nestedIdInitialism: InitialismsNestedIdInitialism,
 
     #[serde(rename = "utf8")]
     pub utf8: String,

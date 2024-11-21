@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = int16
+type RootInt16 = int16

@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root struct {
+type Keywords struct {
 	For For `json:"for"`
 
 	Object Object `json:"object"`

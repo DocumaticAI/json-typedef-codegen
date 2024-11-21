@@ -7,12 +7,12 @@ from typing import Any, Dict, Optional, Union, get_args, get_origin
 
 
 @dataclass
-class Root:
+class Keywords:
     for_: 'For'
     object: 'Object'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'Keywords':
         return cls(
             _from_json_data(For, data.get("for")),
             _from_json_data(Object, data.get("object")),
@@ -103,4 +103,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

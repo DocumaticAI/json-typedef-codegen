@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root0 struct {
+type NullableProperties0 struct {
 	Bar string `json:"bar"`
 
 	Baz []bool `json:"baz"`
@@ -12,4 +12,4 @@ type Root0 struct {
 	Quux []bool `json:"quux"`
 }
 
-type Root = *Root0
+type NullableProperties = *NullableProperties0

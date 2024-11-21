@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = uint16
+type RootUint16 = uint16

@@ -7,13 +7,13 @@ from typing import Any, Dict, List, Optional, Union, get_args, get_origin
 
 
 @dataclass
-class Root:
+class OptionalProperties:
     bar: 'Optional[List[str]]'
     baz: 'Optional[bool]'
     foo: 'Optional[str]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'OptionalProperties':
         return cls(
             _from_json_data(Optional[List[str]], data.get("bar")),
             _from_json_data(Optional[bool], data.get("baz")),
@@ -87,4 +87,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

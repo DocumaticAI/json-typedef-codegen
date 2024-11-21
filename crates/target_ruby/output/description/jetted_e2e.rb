@@ -6,21 +6,21 @@ require 'time'
 module JettedE2E
 
   # A description for discriminator
-  class RootDiscriminatorWithDescription
+  class DescriptionDiscriminatorWithDescription
     attr_accessor :foo
 
     def self.from_json_data(data)
       {
-        "bar" => RootDiscriminatorWithDescriptionBar,
+        "bar" => DescriptionDiscriminatorWithDescriptionBar,
       }[data["foo"]].from_json_data(data)
     end
   end
 
   # A description for discriminator variant
-  class RootDiscriminatorWithDescriptionBar < RootDiscriminatorWithDescription
+  class DescriptionDiscriminatorWithDescriptionBar < DescriptionDiscriminatorWithDescription
 
     def self.from_json_data(data)
-      out = RootDiscriminatorWithDescriptionBar.new
+      out = DescriptionDiscriminatorWithDescriptionBar.new
       out.foo = "bar"
       out
     end
@@ -32,7 +32,7 @@ module JettedE2E
   end
 
   # A description for enum
-  class RootEnumWithDescription
+  class DescriptionEnumWithDescription
     attr_accessor :value
 
     def initialize(value)
@@ -64,10 +64,10 @@ module JettedE2E
   end
 
   # A description for properties
-  class RootPropertiesWithDescription
+  class DescriptionPropertiesWithDescription
 
     def self.from_json_data(data)
-      out = RootPropertiesWithDescription.new
+      out = DescriptionPropertiesWithDescription.new
       out
     end
 
@@ -77,7 +77,7 @@ module JettedE2E
     end
   end
 
-  class Root
+  class Description
     # A description for discriminator
     attr_accessor :discriminator_with_description
 
@@ -101,11 +101,11 @@ module JettedE2E
     attr_accessor :string_with_description
 
     def self.from_json_data(data)
-      out = Root.new
-      out.discriminator_with_description = JettedE2E::from_json_data(RootDiscriminatorWithDescription, data["discriminator_with_description"])
-      out.enum_with_description = JettedE2E::from_json_data(RootEnumWithDescription, data["enum_with_description"])
+      out = Description.new
+      out.discriminator_with_description = JettedE2E::from_json_data(DescriptionDiscriminatorWithDescription, data["discriminator_with_description"])
+      out.enum_with_description = JettedE2E::from_json_data(DescriptionEnumWithDescription, data["enum_with_description"])
       out.long_description = JettedE2E::from_json_data(String, data["long_description"])
-      out.properties_with_description = JettedE2E::from_json_data(RootPropertiesWithDescription, data["properties_with_description"])
+      out.properties_with_description = JettedE2E::from_json_data(DescriptionPropertiesWithDescription, data["properties_with_description"])
       out.ref_with_description = JettedE2E::from_json_data(Baz, data["ref_with_description"])
       out.string_with_description = JettedE2E::from_json_data(String, data["string_with_description"])
       out

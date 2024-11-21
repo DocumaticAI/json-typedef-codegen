@@ -2,22 +2,22 @@
 
 package jetted_e2e
 
-type Root string
+type EmptyAndNonasciiEnumValues string
 
 const (
-	Root0 Root = ""
+	EmptyAndNonasciiEnumValues0 EmptyAndNonasciiEnumValues = ""
 
-	RootFoo Root = "$foo"
+	EmptyAndNonasciiEnumValuesFoo EmptyAndNonasciiEnumValues = "$foo"
 
-	RootFoo0 Root = "0foo"
+	EmptyAndNonasciiEnumValuesFoo0 EmptyAndNonasciiEnumValues = "0foo"
 
-	RootFoo1 Root = "_foo"
+	EmptyAndNonasciiEnumValuesFoo1 EmptyAndNonasciiEnumValues = "_foo"
 
-	RootFooBar Root = "foo\nbar"
+	EmptyAndNonasciiEnumValuesFooBar EmptyAndNonasciiEnumValues = "foo\nbar"
 
-	RootFooBar0 Root = "foo bar"
+	EmptyAndNonasciiEnumValuesFooBar0 EmptyAndNonasciiEnumValues = "foo bar"
 
-	RootFoo0bar Root = "foo0bar"
+	EmptyAndNonasciiEnumValuesFoo0bar EmptyAndNonasciiEnumValues = "foo0bar"
 
-	RootFooBar1 Root = "foo﷽bar"
+	EmptyAndNonasciiEnumValuesFooBar1 EmptyAndNonasciiEnumValues = "foo﷽bar"
 )

@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = uint8
+type RootUint8 = uint8

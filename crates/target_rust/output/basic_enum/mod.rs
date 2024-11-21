@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub enum Root {
+pub enum BasicEnum {
     #[serde(rename = "Bar")]
     Bar,
 

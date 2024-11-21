@@ -7,11 +7,11 @@ from typing import Any, Dict, Optional, Union, get_args, get_origin
 
 
 @dataclass
-class RootFooBar:
+class TypeCollisionsFooBar:
     x: 'bool'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootFooBar':
+    def from_json_data(cls, data: Any) -> 'TypeCollisionsFooBar':
         return cls(
             _from_json_data(bool, data.get("x")),
         )
@@ -22,13 +22,13 @@ class RootFooBar:
         return data
 
 @dataclass
-class RootFoo:
-    bar: 'RootFooBar'
+class TypeCollisionsFoo:
+    bar: 'TypeCollisionsFooBar'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootFoo':
+    def from_json_data(cls, data: Any) -> 'TypeCollisionsFoo':
         return cls(
-            _from_json_data(RootFooBar, data.get("bar")),
+            _from_json_data(TypeCollisionsFooBar, data.get("bar")),
         )
 
     def to_json_data(self) -> Any:
@@ -37,11 +37,11 @@ class RootFoo:
         return data
 
 @dataclass
-class RootFooBar0:
+class TypeCollisionsFooBar0:
     x: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootFooBar0':
+    def from_json_data(cls, data: Any) -> 'TypeCollisionsFooBar0':
         return cls(
             _from_json_data(str, data.get("x")),
         )
@@ -52,15 +52,15 @@ class RootFooBar0:
         return data
 
 @dataclass
-class Root:
-    foo: 'RootFoo'
-    foo_bar: 'RootFooBar0'
+class TypeCollisions:
+    foo: 'TypeCollisionsFoo'
+    foo_bar: 'TypeCollisionsFooBar0'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'TypeCollisions':
         return cls(
-            _from_json_data(RootFoo, data.get("foo")),
-            _from_json_data(RootFooBar0, data.get("foo_bar")),
+            _from_json_data(TypeCollisionsFoo, data.get("foo")),
+            _from_json_data(TypeCollisionsFooBar0, data.get("foo_bar")),
         )
 
     def to_json_data(self) -> Any:
@@ -126,4 +126,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

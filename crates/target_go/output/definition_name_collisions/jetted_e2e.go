@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root = Foo0
+type DefinitionNameCollisions = Foo0
 
 type Bar = Bar0
 

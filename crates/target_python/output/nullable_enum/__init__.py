@@ -7,24 +7,24 @@ from enum import Enum
 from typing import Any, Optional, Union, get_args, get_origin
 
 
-class Root0(Enum):
+class NullableEnum0(Enum):
     BAR = "Bar"
     BAZ = "Baz"
     FOO = "Foo"
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root0':
+    def from_json_data(cls, data: Any) -> 'NullableEnum0':
         return cls(data)
 
     def to_json_data(self) -> Any:
         return self.value
 
 @dataclass
-class Root:
-    value: 'Optional[Root0]'
+class NullableEnum:
+    value: 'Optional[NullableEnum0]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
-        return cls(_from_json_data(Optional[Root0], data))
+    def from_json_data(cls, data: Any) -> 'NullableEnum':
+        return cls(_from_json_data(Optional[NullableEnum0], data))
 
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
@@ -86,4 +86,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

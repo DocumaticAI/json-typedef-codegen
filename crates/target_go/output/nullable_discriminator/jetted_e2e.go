@@ -7,26 +7,26 @@ import (
 	"fmt"
 )
 
-type Root0 struct {
+type NullableDiscriminator0 struct {
 	Foo string
 
-	Bar RootBar
+	Bar NullableDiscriminatorBar
 
-	Quux RootQuux
+	Quux NullableDiscriminatorQuux
 }
 
-func (v Root0) MarshalJSON() ([]byte, error) {
+func (v NullableDiscriminator0) MarshalJSON() ([]byte, error) {
 	switch v.Foo {
 	case "bar":
-		return json.Marshal(struct { T string `json:"foo"`; RootBar }{ v.Foo, v.Bar })
+		return json.Marshal(struct { T string `json:"foo"`; NullableDiscriminatorBar }{ v.Foo, v.Bar })
 	case "quux":
-		return json.Marshal(struct { T string `json:"foo"`; RootQuux }{ v.Foo, v.Quux })
+		return json.Marshal(struct { T string `json:"foo"`; NullableDiscriminatorQuux }{ v.Foo, v.Quux })
 	}
 
 	return nil, fmt.Errorf("bad Foo value: %s", v.Foo)
 }
 
-func (v *Root0) UnmarshalJSON(b []byte) error {
+func (v *NullableDiscriminator0) UnmarshalJSON(b []byte) error {
 	var t struct { T string `json:"foo"` }
 	if err := json.Unmarshal(b, &t); err != nil {
 		return err
@@ -50,12 +50,12 @@ func (v *Root0) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-type RootBar struct {
+type NullableDiscriminatorBar struct {
 	Baz string `json:"baz"`
 }
 
-type RootQuux struct {
+type NullableDiscriminatorQuux struct {
 	Quuz string `json:"quuz"`
 }
 
-type Root = *Root0
+type NullableDiscriminator = *NullableDiscriminator0

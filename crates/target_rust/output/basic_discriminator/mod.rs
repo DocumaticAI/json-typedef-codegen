@@ -4,22 +4,22 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "foo")]
-pub enum Root {
+pub enum BasicDiscriminator {
     #[serde(rename = "BAR_BAZ")]
-    BarBaz(RootBarBaz),
+    BarBaz(BasicDiscriminatorBarBaz),
 
     #[serde(rename = "QUUX")]
-    Quux(RootQuux),
+    Quux(BasicDiscriminatorQuux),
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootBarBaz {
+pub struct BasicDiscriminatorBarBaz {
     #[serde(rename = "baz")]
     pub baz: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootQuux {
+pub struct BasicDiscriminatorQuux {
     #[serde(rename = "quuz")]
     pub quuz: String,
 }

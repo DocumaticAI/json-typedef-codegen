@@ -7,7 +7,7 @@ from typing import Any, Dict, Optional, Union, get_args, get_origin
 
 
 @dataclass
-class Root:
+class NullableReferences:
     notnull_ref_notnull_string: 'NotnullRefNotnullString'
     notnull_ref_null_string: 'NotnullRefNullString'
     notnull_string: 'NotnullString'
@@ -16,7 +16,7 @@ class Root:
     null_string: 'NullString'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'NullableReferences':
         return cls(
             _from_json_data(NotnullRefNotnullString, data.get("notnull_ref_notnull_string")),
             _from_json_data(NotnullRefNullString, data.get("notnull_ref_null_string")),
@@ -159,4 +159,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

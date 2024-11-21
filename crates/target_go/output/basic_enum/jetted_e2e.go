@@ -2,12 +2,12 @@
 
 package jetted_e2e
 
-type Root string
+type BasicEnum string
 
 const (
-	RootBar Root = "Bar"
+	BasicEnumBar BasicEnum = "Bar"
 
-	RootBaz Root = "Baz"
+	BasicEnumBaz BasicEnum = "Baz"
 
-	RootFoo Root = "Foo"
+	BasicEnumFoo BasicEnum = "Foo"
 )

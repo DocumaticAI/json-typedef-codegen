@@ -5,11 +5,11 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class RootNullableString
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = Root.new
+      out = RootNullableString.new
       out.value = JettedE2E.from_json_data(String, data)
       out
     end

@@ -7,12 +7,12 @@ from typing import Any, Dict, Optional, Union, get_args, get_origin
 
 
 @dataclass
-class RootNestedIDInitialism:
+class InitialismsNestedIDInitialism:
     json: 'str'
     normalword: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootNestedIDInitialism':
+    def from_json_data(cls, data: Any) -> 'InitialismsNestedIDInitialism':
         return cls(
             _from_json_data(str, data.get("json")),
             _from_json_data(str, data.get("normalword")),
@@ -25,20 +25,20 @@ class RootNestedIDInitialism:
         return data
 
 @dataclass
-class Root:
+class Initialisms:
     http: 'str'
     id: 'str'
-    nested_id_initialism: 'RootNestedIDInitialism'
+    nested_id_initialism: 'InitialismsNestedIDInitialism'
     utf8: 'str'
     word_with_embedded_id_initialism: 'str'
     word_with_trailing_initialism_id: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'Initialisms':
         return cls(
             _from_json_data(str, data.get("http")),
             _from_json_data(str, data.get("id")),
-            _from_json_data(RootNestedIDInitialism, data.get("nested_id_initialism")),
+            _from_json_data(InitialismsNestedIDInitialism, data.get("nested_id_initialism")),
             _from_json_data(str, data.get("utf8")),
             _from_json_data(str, data.get("word_with_embedded_id_initialism")),
             _from_json_data(str, data.get("word_with_trailing_initialism_id")),
@@ -111,4 +111,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

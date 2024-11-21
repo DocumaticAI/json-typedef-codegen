@@ -5,7 +5,7 @@ require 'time'
 
 module JettedE2E
 
-  class Root0
+  class NullableEnum0
     attr_accessor :value
 
     def initialize(value)
@@ -31,12 +31,12 @@ module JettedE2E
     end
   end
 
-  class Root
+  class NullableEnum
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = Root.new
-      out.value = JettedE2E.from_json_data(Root0, data)
+      out = NullableEnum.new
+      out.value = JettedE2E.from_json_data(NullableEnum0, data)
       out
     end
 

@@ -5,11 +5,11 @@ require 'time'
 
 module JettedE2E
 
-  class RootFooBar
+  class TypeCollisionsFooBar
     attr_accessor :x
 
     def self.from_json_data(data)
-      out = RootFooBar.new
+      out = TypeCollisionsFooBar.new
       out.x = JettedE2E::from_json_data(TrueClass, data["x"])
       out
     end
@@ -21,12 +21,12 @@ module JettedE2E
     end
   end
 
-  class RootFoo
+  class TypeCollisionsFoo
     attr_accessor :bar
 
     def self.from_json_data(data)
-      out = RootFoo.new
-      out.bar = JettedE2E::from_json_data(RootFooBar, data["bar"])
+      out = TypeCollisionsFoo.new
+      out.bar = JettedE2E::from_json_data(TypeCollisionsFooBar, data["bar"])
       out
     end
 
@@ -37,11 +37,11 @@ module JettedE2E
     end
   end
 
-  class RootFooBar0
+  class TypeCollisionsFooBar0
     attr_accessor :x
 
     def self.from_json_data(data)
-      out = RootFooBar0.new
+      out = TypeCollisionsFooBar0.new
       out.x = JettedE2E::from_json_data(String, data["x"])
       out
     end
@@ -53,14 +53,14 @@ module JettedE2E
     end
   end
 
-  class Root
+  class TypeCollisions
     attr_accessor :foo
     attr_accessor :foo_bar
 
     def self.from_json_data(data)
-      out = Root.new
-      out.foo = JettedE2E::from_json_data(RootFoo, data["foo"])
-      out.foo_bar = JettedE2E::from_json_data(RootFooBar0, data["foo_bar"])
+      out = TypeCollisions.new
+      out.foo = JettedE2E::from_json_data(TypeCollisionsFoo, data["foo"])
+      out.foo_bar = JettedE2E::from_json_data(TypeCollisionsFooBar0, data["foo_bar"])
       out
     end
 

@@ -5,7 +5,7 @@ require 'time'
 
 module JettedE2E
 
-  class RootFooBar
+  class EnumCollisionsFooBar
     attr_accessor :value
 
     def initialize(value)
@@ -29,12 +29,12 @@ module JettedE2E
     end
   end
 
-  class RootFoo
+  class EnumCollisionsFoo
     attr_accessor :bar
 
     def self.from_json_data(data)
-      out = RootFoo.new
-      out.bar = JettedE2E::from_json_data(RootFooBar, data["bar"])
+      out = EnumCollisionsFoo.new
+      out.bar = JettedE2E::from_json_data(EnumCollisionsFooBar, data["bar"])
       out
     end
 
@@ -45,7 +45,7 @@ module JettedE2E
     end
   end
 
-  class RootFooBar0
+  class EnumCollisionsFooBar0
     attr_accessor :value
 
     def initialize(value)
@@ -69,14 +69,14 @@ module JettedE2E
     end
   end
 
-  class Root
+  class EnumCollisions
     attr_accessor :foo
     attr_accessor :foo_bar
 
     def self.from_json_data(data)
-      out = Root.new
-      out.foo = JettedE2E::from_json_data(RootFoo, data["foo"])
-      out.foo_bar = JettedE2E::from_json_data(RootFooBar0, data["foo_bar"])
+      out = EnumCollisions.new
+      out.foo = JettedE2E::from_json_data(EnumCollisionsFoo, data["foo"])
+      out.foo_bar = JettedE2E::from_json_data(EnumCollisionsFooBar0, data["foo_bar"])
       out
     end
 

@@ -5,14 +5,14 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class BasicProperties
     attr_accessor :bar
     attr_accessor :baz
     attr_accessor :foo
     attr_accessor :quux
 
     def self.from_json_data(data)
-      out = Root.new
+      out = BasicProperties.new
       out.bar = JettedE2E::from_json_data(String, data["bar"])
       out.baz = JettedE2E::from_json_data(Array[TrueClass], data["baz"])
       out.foo = JettedE2E::from_json_data(TrueClass, data["foo"])
