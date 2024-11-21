@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct BasicProperties {
     #[serde(rename = "bar")]
     pub bar: String,
 

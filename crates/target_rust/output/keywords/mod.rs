@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct Keywords {
     #[serde(rename = "for")]
     pub for_: For,
 

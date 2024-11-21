@@ -7,14 +7,14 @@ from typing import Any, Dict, Type, Union, get_args, get_origin
 
 
 @dataclass
-class Root:
+class BasicDiscriminator:
     foo: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
-        variants: Dict[str, Type[Root]] = {
-            "BAR_BAZ": RootBarBaz,
-            "QUUX": RootQuux,
+    def from_json_data(cls, data: Any) -> 'BasicDiscriminator':
+        variants: Dict[str, Type[BasicDiscriminator]] = {
+            "BAR_BAZ": BasicDiscriminatorBarBaz,
+            "QUUX": BasicDiscriminatorQuux,
         }
 
         return variants[data["foo"]].from_json_data(data)
@@ -23,11 +23,11 @@ class Root:
         pass
 
 @dataclass
-class RootBarBaz(Root):
+class BasicDiscriminatorBarBaz(BasicDiscriminator):
     baz: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootBarBaz':
+    def from_json_data(cls, data: Any) -> 'BasicDiscriminatorBarBaz':
         return cls(
             "BAR_BAZ",
             _from_json_data(str, data.get("baz")),
@@ -39,11 +39,11 @@ class RootBarBaz(Root):
         return data
 
 @dataclass
-class RootQuux(Root):
+class BasicDiscriminatorQuux(BasicDiscriminator):
     quuz: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootQuux':
+    def from_json_data(cls, data: Any) -> 'BasicDiscriminatorQuux':
         return cls(
             "QUUX",
             _from_json_data(str, data.get("quuz")),
@@ -111,4 +111,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

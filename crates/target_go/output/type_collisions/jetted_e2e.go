@@ -2,20 +2,20 @@
 
 package jetted_e2e
 
-type RootFooBar struct {
+type TypeCollisionsFooBar struct {
 	X bool `json:"x"`
 }
 
-type RootFoo struct {
-	Bar RootFooBar `json:"bar"`
+type TypeCollisionsFoo struct {
+	Bar TypeCollisionsFooBar `json:"bar"`
 }
 
-type RootFooBar0 struct {
+type TypeCollisionsFooBar0 struct {
 	X string `json:"x"`
 }
 
-type Root struct {
-	Foo RootFoo `json:"foo"`
+type TypeCollisions struct {
+	Foo TypeCollisionsFoo `json:"foo"`
 
-	FooBar RootFooBar0 `json:"foo_bar"`
+	FooBar TypeCollisionsFooBar0 `json:"foo_bar"`
 }

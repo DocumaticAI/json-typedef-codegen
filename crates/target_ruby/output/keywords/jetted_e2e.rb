@@ -5,12 +5,12 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class Keywords
     attr_accessor :for_
     attr_accessor :object
 
     def self.from_json_data(data)
-      out = Root.new
+      out = Keywords.new
       out.for_ = JettedE2E::from_json_data(For, data["for"])
       out.object = JettedE2E::from_json_data(Object, data["object"])
       out

@@ -2,12 +2,12 @@
 
 package jetted_e2e
 
-type Root string
+type EnumVariantCollisions string
 
 const (
-	RootFoo Root = "FOO"
+	EnumVariantCollisionsFoo EnumVariantCollisions = "FOO"
 
-	RootFoo0 Root = "Foo"
+	EnumVariantCollisionsFoo0 EnumVariantCollisions = "Foo"
 
-	RootFoo1 Root = "foo"
+	EnumVariantCollisionsFoo1 EnumVariantCollisions = "foo"
 )

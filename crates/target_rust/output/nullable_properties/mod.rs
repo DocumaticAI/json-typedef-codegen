@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root0 {
+pub struct NullableProperties0 {
     #[serde(rename = "bar")]
     pub bar: String,
 
@@ -17,4 +17,4 @@ pub struct Root0 {
     pub quux: Vec<bool>,
 }
 
-pub type Root = Option<Box<Root0>>;
+pub type NullableProperties = Option<Box<NullableProperties0>>;

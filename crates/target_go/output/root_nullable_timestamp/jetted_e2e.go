@@ -4,4 +4,4 @@ package jetted_e2e
 
 import "time"
 
-type Root = *time.Time
+type RootNullableTimestamp = *time.Time

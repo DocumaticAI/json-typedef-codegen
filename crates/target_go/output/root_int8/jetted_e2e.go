@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = int8
+type RootInt8 = int8

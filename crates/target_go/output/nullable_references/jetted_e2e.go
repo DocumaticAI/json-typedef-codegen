@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root struct {
+type NullableReferences struct {
 	NotnullRefNotnullString NotnullRefNotnullString `json:"notnull_ref_notnull_string"`
 
 	NotnullRefNullString NotnullRefNullString `json:"notnull_ref_null_string"`

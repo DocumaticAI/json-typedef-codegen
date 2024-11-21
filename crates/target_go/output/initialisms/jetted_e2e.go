@@ -2,18 +2,18 @@
 
 package jetted_e2e
 
-type RootNestedIDInitialism struct {
+type InitialismsNestedIDInitialism struct {
 	JSON string `json:"json"`
 
 	Normalword string `json:"normalword"`
 }
 
-type Root struct {
+type Initialisms struct {
 	HTTP string `json:"http"`
 
 	ID string `json:"id"`
 
-	NestedIDInitialism RootNestedIDInitialism `json:"nested_id_initialism"`
+	NestedIDInitialism InitialismsNestedIDInitialism `json:"nested_id_initialism"`
 
 	UTF8 string `json:"utf8"`
 

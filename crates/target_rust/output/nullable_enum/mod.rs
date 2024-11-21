@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub enum Root0 {
+pub enum NullableEnum0 {
     #[serde(rename = "Bar")]
     Bar,
 
@@ -14,4 +14,4 @@ pub enum Root0 {
     Foo,
 }
 
-pub type Root = Option<Box<Root0>>;
+pub type NullableEnum = Option<Box<NullableEnum0>>;

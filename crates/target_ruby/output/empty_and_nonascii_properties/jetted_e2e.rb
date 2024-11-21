@@ -5,7 +5,7 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class EmptyAndNonasciiProperties
     attr_accessor :default_name
     attr_accessor :foo
     attr_accessor :foo0
@@ -16,7 +16,7 @@ module JettedE2E
     attr_accessor :foo_bar1
 
     def self.from_json_data(data)
-      out = Root.new
+      out = EmptyAndNonasciiProperties.new
       out.default_name = JettedE2E::from_json_data(String, data[""])
       out.foo = JettedE2E::from_json_data(String, data["$foo"])
       out.foo0 = JettedE2E::from_json_data(String, data["0foo"])

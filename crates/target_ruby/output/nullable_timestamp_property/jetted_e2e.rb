@@ -5,11 +5,11 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class NullableTimestampProperty
     attr_accessor :foo
 
     def self.from_json_data(data)
-      out = Root.new
+      out = NullableTimestampProperty.new
       out.foo = JettedE2E::from_json_data(DateTime, data["foo"])
       out
     end

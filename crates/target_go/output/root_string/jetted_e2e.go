@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = string
+type RootString = string

@@ -4,10 +4,10 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootOverrideTypeDiscriminatorBaz {}
+pub struct CustomOverridesOverrideTypeDiscriminatorBaz {}
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct CustomOverrides {
     #[serde(rename = "override_elements_container")]
     pub overrideElementsContainer: Vec<String>,
 

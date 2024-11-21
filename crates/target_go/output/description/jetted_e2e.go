@@ -8,22 +8,22 @@ import (
 )
 
 // A description for discriminator
-type RootDiscriminatorWithDescription struct {
+type DescriptionDiscriminatorWithDescription struct {
 	Foo string
 
-	Bar RootDiscriminatorWithDescriptionBar
+	Bar DescriptionDiscriminatorWithDescriptionBar
 }
 
-func (v RootDiscriminatorWithDescription) MarshalJSON() ([]byte, error) {
+func (v DescriptionDiscriminatorWithDescription) MarshalJSON() ([]byte, error) {
 	switch v.Foo {
 	case "bar":
-		return json.Marshal(struct { T string `json:"foo"`; RootDiscriminatorWithDescriptionBar }{ v.Foo, v.Bar })
+		return json.Marshal(struct { T string `json:"foo"`; DescriptionDiscriminatorWithDescriptionBar }{ v.Foo, v.Bar })
 	}
 
 	return nil, fmt.Errorf("bad Foo value: %s", v.Foo)
 }
 
-func (v *RootDiscriminatorWithDescription) UnmarshalJSON(b []byte) error {
+func (v *DescriptionDiscriminatorWithDescription) UnmarshalJSON(b []byte) error {
 	var t struct { T string `json:"foo"` }
 	if err := json.Unmarshal(b, &t); err != nil {
 		return err
@@ -46,33 +46,33 @@ func (v *RootDiscriminatorWithDescription) UnmarshalJSON(b []byte) error {
 }
 
 // A description for discriminator variant
-type RootDiscriminatorWithDescriptionBar struct {
+type DescriptionDiscriminatorWithDescriptionBar struct {
 }
 
 // A description for enum
-type RootEnumWithDescription string
+type DescriptionEnumWithDescription string
 
 const (
 // A description for X
-	RootEnumWithDescriptionX RootEnumWithDescription = "X"
+	DescriptionEnumWithDescriptionX DescriptionEnumWithDescription = "X"
 
 // A description for Y
-	RootEnumWithDescriptionY RootEnumWithDescription = "Y"
+	DescriptionEnumWithDescriptionY DescriptionEnumWithDescription = "Y"
 
 // A description for Z
-	RootEnumWithDescriptionZ RootEnumWithDescription = "Z"
+	DescriptionEnumWithDescriptionZ DescriptionEnumWithDescription = "Z"
 )
 
 // A description for properties
-type RootPropertiesWithDescription struct {
+type DescriptionPropertiesWithDescription struct {
 }
 
-type Root struct {
+type Description struct {
 	// A description for discriminator
-	DiscriminatorWithDescription RootDiscriminatorWithDescription `json:"discriminator_with_description"`
+	DiscriminatorWithDescription DescriptionDiscriminatorWithDescription `json:"discriminator_with_description"`
 
 	// A description for enum
-	EnumWithDescription RootEnumWithDescription `json:"enum_with_description"`
+	EnumWithDescription DescriptionEnumWithDescription `json:"enum_with_description"`
 
 	// Whereas disregard and contempt for human rights have resulted in barbarous
 	// acts which have outraged the conscience of mankind, and the advent of a
@@ -82,7 +82,7 @@ type Root struct {
 	LongDescription string `json:"long_description"`
 
 	// A description for properties
-	PropertiesWithDescription RootPropertiesWithDescription `json:"properties_with_description"`
+	PropertiesWithDescription DescriptionPropertiesWithDescription `json:"properties_with_description"`
 
 	// A description for ref
 	RefWithDescription Baz `json:"ref_with_description"`

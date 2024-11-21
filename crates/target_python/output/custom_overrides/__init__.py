@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Optional, Union, get_args, get_origin
 
 
 @dataclass
-class Root:
+class CustomOverrides:
     override_elements_container: 'List[str]'
     override_type_discriminator: 'object'
     override_type_enum: 'object'
@@ -16,7 +16,7 @@ class Root:
     override_values_container: 'Dict[str, str]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'CustomOverrides':
         return cls(
             _from_json_data(List[str], data.get("override_elements_container")),
             _from_json_data(object, data.get("override_type_discriminator")),
@@ -93,4 +93,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

@@ -2,28 +2,28 @@
 
 package jetted_e2e
 
-type RootFooBar string
+type EnumCollisionsFooBar string
 
 const (
-	RootFooBarX RootFooBar = "x"
+	EnumCollisionsFooBarX EnumCollisionsFooBar = "x"
 
-	RootFooBarY RootFooBar = "y"
+	EnumCollisionsFooBarY EnumCollisionsFooBar = "y"
 )
 
-type RootFoo struct {
-	Bar RootFooBar `json:"bar"`
+type EnumCollisionsFoo struct {
+	Bar EnumCollisionsFooBar `json:"bar"`
 }
 
-type RootFooBar0 string
+type EnumCollisionsFooBar0 string
 
 const (
-	RootFooBarX0 RootFooBar0 = "x"
+	EnumCollisionsFooBarX0 EnumCollisionsFooBar0 = "x"
 
-	RootFooBarY0 RootFooBar0 = "y"
+	EnumCollisionsFooBarY0 EnumCollisionsFooBar0 = "y"
 )
 
-type Root struct {
-	Foo RootFoo `json:"foo"`
+type EnumCollisions struct {
+	Foo EnumCollisionsFoo `json:"foo"`
 
-	FooBar RootFooBar0 `json:"foo_bar"`
+	FooBar EnumCollisionsFooBar0 `json:"foo_bar"`
 }

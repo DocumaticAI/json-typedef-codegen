@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = interface{}
+type RootEmpty = interface{}

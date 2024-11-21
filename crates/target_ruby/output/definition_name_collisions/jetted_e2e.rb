@@ -5,11 +5,11 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class DefinitionNameCollisions
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = Root.new
+      out = DefinitionNameCollisions.new
       out.value = JettedE2E.from_json_data(Foo0, data)
       out
     end

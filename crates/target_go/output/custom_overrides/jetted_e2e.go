@@ -2,10 +2,10 @@
 
 package jetted_e2e
 
-type RootOverrideTypeDiscriminatorBaz struct {
+type CustomOverridesOverrideTypeDiscriminatorBaz struct {
 }
 
-type Root struct {
+type CustomOverrides struct {
 	OverrideElementsContainer []string `json:"override_elements_container"`
 
 	OverrideTypeDiscriminator interface{} `json:"override_type_discriminator"`

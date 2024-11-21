@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root struct {
+type OptionalProperties struct {
 	Bar []string `json:"bar,omitempty"`
 
 	Baz *bool `json:"baz,omitempty"`

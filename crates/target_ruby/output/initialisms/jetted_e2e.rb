@@ -5,12 +5,12 @@ require 'time'
 
 module JettedE2E
 
-  class RootNestedIDInitialism
+  class InitialismsNestedIDInitialism
     attr_accessor :json
     attr_accessor :normalword
 
     def self.from_json_data(data)
-      out = RootNestedIDInitialism.new
+      out = InitialismsNestedIDInitialism.new
       out.json = JettedE2E::from_json_data(String, data["json"])
       out.normalword = JettedE2E::from_json_data(String, data["normalword"])
       out
@@ -24,7 +24,7 @@ module JettedE2E
     end
   end
 
-  class Root
+  class Initialisms
     attr_accessor :http
     attr_accessor :id
     attr_accessor :nested_id_initialism
@@ -33,10 +33,10 @@ module JettedE2E
     attr_accessor :word_with_trailing_initialism_id
 
     def self.from_json_data(data)
-      out = Root.new
+      out = Initialisms.new
       out.http = JettedE2E::from_json_data(String, data["http"])
       out.id = JettedE2E::from_json_data(String, data["id"])
-      out.nested_id_initialism = JettedE2E::from_json_data(RootNestedIDInitialism, data["nested_id_initialism"])
+      out.nested_id_initialism = JettedE2E::from_json_data(InitialismsNestedIDInitialism, data["nested_id_initialism"])
       out.utf8 = JettedE2E::from_json_data(String, data["utf8"])
       out.word_with_embedded_id_initialism = JettedE2E::from_json_data(String, data["word_with_embedded_id_initialism"])
       out.word_with_trailing_initialism_id = JettedE2E::from_json_data(String, data["word_with_trailing_initialism_id"])

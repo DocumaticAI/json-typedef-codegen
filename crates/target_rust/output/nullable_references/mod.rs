@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct NullableReferences {
     #[serde(rename = "notnull_ref_notnull_string")]
     pub notnullRefNotnullString: NotnullRefNotnullString,
 

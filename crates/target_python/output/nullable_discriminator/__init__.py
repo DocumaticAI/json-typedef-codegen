@@ -7,14 +7,14 @@ from typing import Any, Dict, Optional, Type, Union, get_args, get_origin
 
 
 @dataclass
-class Root0:
+class NullableDiscriminator0:
     foo: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root0':
-        variants: Dict[str, Type[Root0]] = {
-            "bar": RootBar,
-            "quux": RootQuux,
+    def from_json_data(cls, data: Any) -> 'NullableDiscriminator0':
+        variants: Dict[str, Type[NullableDiscriminator0]] = {
+            "bar": NullableDiscriminatorBar,
+            "quux": NullableDiscriminatorQuux,
         }
 
         return variants[data["foo"]].from_json_data(data)
@@ -23,11 +23,11 @@ class Root0:
         pass
 
 @dataclass
-class RootBar(Root0):
+class NullableDiscriminatorBar(NullableDiscriminator0):
     baz: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootBar':
+    def from_json_data(cls, data: Any) -> 'NullableDiscriminatorBar':
         return cls(
             "bar",
             _from_json_data(str, data.get("baz")),
@@ -39,11 +39,11 @@ class RootBar(Root0):
         return data
 
 @dataclass
-class RootQuux(Root0):
+class NullableDiscriminatorQuux(NullableDiscriminator0):
     quuz: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'RootQuux':
+    def from_json_data(cls, data: Any) -> 'NullableDiscriminatorQuux':
         return cls(
             "quux",
             _from_json_data(str, data.get("quuz")),
@@ -55,12 +55,12 @@ class RootQuux(Root0):
         return data
 
 @dataclass
-class Root:
-    value: 'Optional[Root0]'
+class NullableDiscriminator:
+    value: 'Optional[NullableDiscriminator0]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
-        return cls(_from_json_data(Optional[Root0], data))
+    def from_json_data(cls, data: Any) -> 'NullableDiscriminator':
+        return cls(_from_json_data(Optional[NullableDiscriminator0], data))
 
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
@@ -122,4 +122,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

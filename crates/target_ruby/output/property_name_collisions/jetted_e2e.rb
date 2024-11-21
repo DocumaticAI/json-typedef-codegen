@@ -5,12 +5,12 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class PropertyNameCollisions
     attr_accessor :foo
     attr_accessor :foo0
 
     def self.from_json_data(data)
-      out = Root.new
+      out = PropertyNameCollisions.new
       out.foo = JettedE2E::from_json_data(String, data["Foo"])
       out.foo0 = JettedE2E::from_json_data(String, data["foo"])
       out

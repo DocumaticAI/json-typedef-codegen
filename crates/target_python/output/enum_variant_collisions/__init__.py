@@ -6,12 +6,12 @@ from enum import Enum
 from typing import Any, Union, get_args, get_origin
 
 
-class Root(Enum):
+class EnumVariantCollisions(Enum):
     FOO = "FOO"
     FOO0 = "Foo"
     FOO1 = "foo"
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
+    def from_json_data(cls, data: Any) -> 'EnumVariantCollisions':
         return cls(data)
 
     def to_json_data(self) -> Any:
@@ -74,4 +74,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

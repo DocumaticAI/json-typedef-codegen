@@ -5,18 +5,18 @@ use serde::{Deserialize, Serialize};
 /// A description for discriminator
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "foo")]
-pub enum RootDiscriminatorWithDescription {
+pub enum DescriptionDiscriminatorWithDescription {
     #[serde(rename = "bar")]
-    Bar(RootDiscriminatorWithDescriptionBar),
+    Bar(DescriptionDiscriminatorWithDescriptionBar),
 }
 
 /// A description for discriminator variant
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootDiscriminatorWithDescriptionBar {}
+pub struct DescriptionDiscriminatorWithDescriptionBar {}
 
 /// A description for enum
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub enum RootEnumWithDescription {
+pub enum DescriptionEnumWithDescription {
     /// A description for X
     #[serde(rename = "X")]
     X,
@@ -32,17 +32,17 @@ pub enum RootEnumWithDescription {
 
 /// A description for properties
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootPropertiesWithDescription {}
+pub struct DescriptionPropertiesWithDescription {}
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct Description {
     /// A description for discriminator
     #[serde(rename = "discriminator_with_description")]
-    pub discriminatorWithDescription: RootDiscriminatorWithDescription,
+    pub discriminatorWithDescription: DescriptionDiscriminatorWithDescription,
 
     /// A description for enum
     #[serde(rename = "enum_with_description")]
-    pub enumWithDescription: RootEnumWithDescription,
+    pub enumWithDescription: DescriptionEnumWithDescription,
 
     /// Whereas disregard and contempt for human rights have resulted in
     /// barbarous acts which have outraged the conscience of mankind, and the
@@ -54,7 +54,7 @@ pub struct Root {
 
     /// A description for properties
     #[serde(rename = "properties_with_description")]
-    pub propertiesWithDescription: RootPropertiesWithDescription,
+    pub propertiesWithDescription: DescriptionPropertiesWithDescription,
 
     /// A description for ref
     #[serde(rename = "ref_with_description")]

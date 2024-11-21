@@ -7,14 +7,14 @@ from typing import Any, Dict, List, Optional, Union, get_args, get_origin
 
 
 @dataclass
-class Root0:
+class NullableProperties0:
     bar: 'str'
     baz: 'List[bool]'
     foo: 'bool'
     quux: 'List[bool]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root0':
+    def from_json_data(cls, data: Any) -> 'NullableProperties0':
         return cls(
             _from_json_data(str, data.get("bar")),
             _from_json_data(List[bool], data.get("baz")),
@@ -31,12 +31,12 @@ class Root0:
         return data
 
 @dataclass
-class Root:
-    value: 'Optional[Root0]'
+class NullableProperties:
+    value: 'Optional[NullableProperties0]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Root':
-        return cls(_from_json_data(Optional[Root0], data))
+    def from_json_data(cls, data: Any) -> 'NullableProperties':
+        return cls(_from_json_data(Optional[NullableProperties0], data))
 
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
@@ -98,4 +98,4 @@ def _parse_rfc3339(s: str) -> datetime:
         second_parsed = 59
 
     return datetime(int(year), int(month), int(day), int(hour), int(minute),
-                    second_parsed, frac_seconds_parsed, tzinfo)
+                    second_parsed, frac_seconds_parsed, tzinfo)            

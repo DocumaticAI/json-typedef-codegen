@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = uint32
+type RootUint32 = uint32

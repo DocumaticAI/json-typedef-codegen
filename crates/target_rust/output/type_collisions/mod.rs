@@ -3,28 +3,28 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootFooBar {
+pub struct TypeCollisionsFooBar {
     #[serde(rename = "x")]
     pub x: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootFoo {
+pub struct TypeCollisionsFoo {
     #[serde(rename = "bar")]
-    pub bar: RootFooBar,
+    pub bar: TypeCollisionsFooBar,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootFooBar0 {
+pub struct TypeCollisionsFooBar0 {
     #[serde(rename = "x")]
     pub x: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct TypeCollisions {
     #[serde(rename = "foo")]
-    pub foo: RootFoo,
+    pub foo: TypeCollisionsFoo,
 
     #[serde(rename = "foo_bar")]
-    pub fooBar: RootFooBar0,
+    pub fooBar: TypeCollisionsFooBar0,
 }

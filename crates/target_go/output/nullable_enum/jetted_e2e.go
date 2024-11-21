@@ -2,14 +2,14 @@
 
 package jetted_e2e
 
-type Root0 string
+type NullableEnum0 string
 
 const (
-	RootBar Root0 = "Bar"
+	NullableEnumBar NullableEnum0 = "Bar"
 
-	RootBaz Root0 = "Baz"
+	NullableEnumBaz NullableEnum0 = "Baz"
 
-	RootFoo Root0 = "Foo"
+	NullableEnumFoo NullableEnum0 = "Foo"
 )
 
-type Root = *Root0
+type NullableEnum = *NullableEnum0

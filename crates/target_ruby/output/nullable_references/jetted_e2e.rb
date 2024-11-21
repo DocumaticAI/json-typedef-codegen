@@ -5,7 +5,7 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class NullableReferences
     attr_accessor :notnull_ref_notnull_string
     attr_accessor :notnull_ref_null_string
     attr_accessor :notnull_string
@@ -14,7 +14,7 @@ module JettedE2E
     attr_accessor :null_string
 
     def self.from_json_data(data)
-      out = Root.new
+      out = NullableReferences.new
       out.notnull_ref_notnull_string = JettedE2E::from_json_data(NotnullRefNotnullString, data["notnull_ref_notnull_string"])
       out.notnull_ref_null_string = JettedE2E::from_json_data(NotnullRefNullString, data["notnull_ref_null_string"])
       out.notnull_string = JettedE2E::from_json_data(NotnullString, data["notnull_string"])

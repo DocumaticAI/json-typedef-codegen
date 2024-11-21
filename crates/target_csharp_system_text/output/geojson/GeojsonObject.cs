@@ -10,10 +10,10 @@ namespace JettedE2E
     /// A Geometry object represents points, curves, and surfaces in coordinate
     /// space.  Every Geometry object is a GeoJSON object no matter where it
     /// occurs in a GeoJSON text.
-    ///
+    /// 
     /// o  The value of a Geometry object's "type" member MUST be one of the
     ///     seven geometry types (see Section 1.4).
-    ///
+    /// 
     /// o  A GeoJSON Geometry object of any type other than
     ///     "GeometryCollection" has a member with the name "coordinates". The
     ///     value of the "coordinates" member is an array.  The structure of the

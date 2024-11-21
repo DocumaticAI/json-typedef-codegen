@@ -4,13 +4,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "foo")]
-pub enum Root {
+pub enum DiscriminatorOptionalProperties {
     #[serde(rename = "bar")]
-    Bar(RootBar),
+    Bar(DiscriminatorOptionalPropertiesBar),
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootBar {
+pub struct DiscriminatorOptionalPropertiesBar {
     #[serde(rename = "baz")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub baz: Option<Box<Vec<String>>>,

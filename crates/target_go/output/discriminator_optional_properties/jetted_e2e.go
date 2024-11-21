@@ -7,22 +7,22 @@ import (
 	"fmt"
 )
 
-type Root struct {
+type DiscriminatorOptionalProperties struct {
 	Foo string
 
-	Bar RootBar
+	Bar DiscriminatorOptionalPropertiesBar
 }
 
-func (v Root) MarshalJSON() ([]byte, error) {
+func (v DiscriminatorOptionalProperties) MarshalJSON() ([]byte, error) {
 	switch v.Foo {
 	case "bar":
-		return json.Marshal(struct { T string `json:"foo"`; RootBar }{ v.Foo, v.Bar })
+		return json.Marshal(struct { T string `json:"foo"`; DiscriminatorOptionalPropertiesBar }{ v.Foo, v.Bar })
 	}
 
 	return nil, fmt.Errorf("bad Foo value: %s", v.Foo)
 }
 
-func (v *Root) UnmarshalJSON(b []byte) error {
+func (v *DiscriminatorOptionalProperties) UnmarshalJSON(b []byte) error {
 	var t struct { T string `json:"foo"` }
 	if err := json.Unmarshal(b, &t); err != nil {
 		return err
@@ -44,7 +44,7 @@ func (v *Root) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-type RootBar struct {
+type DiscriminatorOptionalPropertiesBar struct {
 	Baz []string `json:"baz,omitempty"`
 
 	Quux *bool `json:"quux,omitempty"`

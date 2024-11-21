@@ -5,11 +5,11 @@ require 'time'
 
 module JettedE2E
 
-  class Root
+  class RootInt32
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = Root.new
+      out = RootInt32.new
       out.value = JettedE2E.from_json_data(Integer, data)
       out
     end

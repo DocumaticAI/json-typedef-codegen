@@ -2,4 +2,4 @@
 
 package jetted_e2e
 
-type Root = float32
+type RootFloat32 = float32

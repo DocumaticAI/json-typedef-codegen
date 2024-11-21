@@ -2,7 +2,7 @@
 
 package jetted_e2e
 
-type Root struct {
+type PropertyNameCollisions struct {
 	Foo string `json:"Foo"`
 
 	Foo0 string `json:"foo"`

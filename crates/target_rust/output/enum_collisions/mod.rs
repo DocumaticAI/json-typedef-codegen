@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub enum RootFooBar {
+pub enum EnumCollisionsFooBar {
     #[serde(rename = "x")]
     X,
 
@@ -12,13 +12,13 @@ pub enum RootFooBar {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct RootFoo {
+pub struct EnumCollisionsFoo {
     #[serde(rename = "bar")]
-    pub bar: RootFooBar,
+    pub bar: EnumCollisionsFooBar,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub enum RootFooBar0 {
+pub enum EnumCollisionsFooBar0 {
     #[serde(rename = "x")]
     X,
 
@@ -27,10 +27,10 @@ pub enum RootFooBar0 {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Root {
+pub struct EnumCollisions {
     #[serde(rename = "foo")]
-    pub foo: RootFoo,
+    pub foo: EnumCollisionsFoo,
 
     #[serde(rename = "foo_bar")]
-    pub fooBar: RootFooBar0,
+    pub fooBar: EnumCollisionsFooBar0,
 }
