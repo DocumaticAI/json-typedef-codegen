@@ -1,7 +1,10 @@
 [package]
-name = "jtd_e2e_test"
+name = "jetted_e2e_test"
 version = "0.1.0"
-authors = ["Ulysse Carion <ulysse@segment.com>"]
+authors = [
+    "Isaac Harris-Holt <isaac@documatic.com>",
+    "Ulysse Carion <ulysse@segment.com>",
+]
 edition = "2018"
 
 [dependencies]

@@ -6,14 +6,14 @@ import (
 	"io"
 	"os"
 
-	"example.com/jtd_codegen_e2e"
+	"example.com/jetted_e2e"
 )
 
 func main() {
 	decoder := json.NewDecoder(os.Stdin)
 	i := 0
 	for {
-		var input jtd_codegen_e2e.MAIN
+		var input jetted_e2e.MAIN
 		if err := decoder.Decode(&input); err != nil {
 			if err == io.EOF {
 				return

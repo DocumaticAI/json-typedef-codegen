@@ -1,4 +1,4 @@
-# jtd-codegen: Generate code from JSON Typedef schemas
+# Jetted: Generate code from JSON Typedef schemas
 
 [JSON Type Definition](https://jsontypedef.com), aka
 [RFC8927](https://tools.ietf.org/html/rfc8927), is an easy-to-learn,
@@ -6,7 +6,15 @@ standardized way to define a schema for JSON data. You can use JSON Typedef to
 portably validate data across programming languages, create dummy data, generate
 code, and more.
 
-`jtd-codegen` is a CLI tool that generates code bindings in many different
+Jetted is a fork of the original [`jtd-codegen` project](https://github.com/jsontypedef/json-typedef-codegen),
+which has not seen any updates since 2021, and appears to be abandoned. The project was
+forked at commit [a42555d](https://github.com/jsontypedef/json-typedef-codegen/commit/a42555df78cef014e3153c07edf13bd9d00fe8e9),
+at which point the project was MIT-licensed. We intend to continue development of Jetted
+under the MIT license.
+
+We'd like to thank the original authors of `jtd-codegen` for their work on this project.
+
+`jetted` is a CLI tool that generates code bindings in many different
 programming languages from JSON Typedef schemas. For example, from this JSON
 Typedef schema:
 
@@ -87,13 +95,13 @@ jsontypedef.com](https://jsontypedef.com).
 
 ## Installation
 
-Go to [the latest `jtd-codegen` release on
-GitHub](https://github.com/jsontypedef/json-typedef-codegen/releases/latest),
+Go to [the latest `jetted` release on
+GitHub](https://github.com/DocumaticAI/jetted/releases/latest),
 and then install the file for your platform.
 
 ## Usage
 
-To use `jtd-codegen`, you first need to have a JSON Typedef schema to generate
+To use `jetted`, you first need to have a JSON Typedef schema to generate
 data from. Let's say you have this example data already in place:
 
 ```
@@ -107,11 +115,11 @@ $ cat user.jtd.json
 }
 ```
 
-Then you can invoke `jtd-codegen` as:
+Then you can invoke `jetted` as:
 
 ```bash
 # make sure you've already created the "user" directory before running this
-$ jtd-codegen user.jtd.json --typescript-out user
+$ jetted user.jtd.json --typescript-out user
 📝 Writing TypeScript code to: user
 📦 Generated TypeScript code.
 📦     Root schema converted into type: User
@@ -129,10 +137,10 @@ documentation for:
 * TypeScript
 
 You can produce code for multiple programming languages at once. Just pass all
-of the relevant parameters in the `jtd-codegen` invocation. For example:
+of the relevant parameters in the `jetted` invocation. For example:
 
 ```
-$ jtd-codegen user.jtd.json --typescript-out ts-user --python-out py-user
+$ jetted user.jtd.json --typescript-out ts-user --python-out py-user
 📝 Writing Python code to: py-user
 📦 Generated Python code.
 📦     Root schema converted into type: User
@@ -144,7 +152,7 @@ $ jtd-codegen user.jtd.json --typescript-out ts-user --python-out py-user
 ### Advanced Usage: Adding descriptions to generated code
 
 If you'd like to add a commented description to generated code -- for example,
-JavaDocs for Java code, or a docstring for Python -- `jtd-codegen` supports
+JavaDocs for Java code, or a docstring for Python -- `jetted` supports
 those via the `description` and `enumDescription` fields in any schema's
 `metadata`.
 
@@ -210,9 +218,9 @@ export interface User {
 }
 ```
 
-### Advanced Usage: Customizing `jtd-codegen` output
+### Advanced Usage: Customizing `jetted` output
 
-If you'd like to force `jtd-codegen` to use a particular type/class for some
+If you'd like to force `jetted` to use a particular type/class for some
 subset of your schema, you can use a "type override" property to do this. For
 example, if you generate TypeScript from this schema:
 
@@ -241,7 +249,7 @@ export interface User {
 }
 ```
 
-Each language supported by `jtd-codegen` supports a different set of overrides:
+Each language supported by `jetted` supports a different set of overrides:
 
 * C# with `System.Text.Json` as the JSON backend
     * `csharpSystemTextType` overrides the entire outputted type
@@ -260,14 +268,14 @@ Each language supported by `jtd-codegen` supports a different set of overrides:
 * TypeScript
     * `typescriptType` overrides the entire outputted type
 
-### Advanced Usage: Using `jtd-codegen` in a larger build process
+### Advanced Usage: Using `jetted` in a larger build process
 
-If you're using `jtd-codegen` as part of a larger build process (for example: if
+If you're using `jetted` as part of a larger build process (for example: if
 you're building an OpenAPI-like format on top of JSON Typedef), you may find it
-useful to programmatically get back the names of `jtd-codegen`-generated types.
-`jtd-codegen` supports this use-case via the `--log-format` CLI option.
+useful to programmatically get back the names of `jetted`-generated types.
+`jetted` supports this use-case via the `--log-format` CLI option.
 
-By default, `jtd-codegen` uses `--log-format pretty`, which outputs
+By default, `jetted` uses `--log-format pretty`, which outputs
 human-friendly text to stdout. This is an example of `pretty` output:
 
 ```
@@ -277,7 +285,7 @@ human-friendly text to stdout. This is an example of `pretty` output:
 📦     Definition "name" converted into type: Name
 ```
 
-If instead you use `--log-format minimal`, then `jtd-codegen` outputs startup
+If instead you use `--log-format minimal`, then `jetted` outputs startup
 diagnostic information to stderr, and information about generated data
 structures to stdout:
 

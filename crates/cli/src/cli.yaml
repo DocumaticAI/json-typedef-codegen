@@ -1,4 +1,4 @@
-name: jtd-codegen
+name: jetted
 args:
   - schema:
       help: Input schema file. To read schema from stdin, use "-".

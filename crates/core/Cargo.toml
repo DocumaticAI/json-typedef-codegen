@@ -1,7 +1,10 @@
 [package]
-name = "jtd-codegen"
+name = "jetted_core"
 version = "0.1.0"
-authors = ["Ulysse Carion <ulysse@segment.com>"]
+authors = [
+    "Isaac Harris-Holt <isaac@documatic.com>",
+    "Ulysse Carion <ulysse@segment.com>",
+]
 edition = "2018"
 description = "A framework for generating code from JSON Typedef schemas"
 license = "MIT"
