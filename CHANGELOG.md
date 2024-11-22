@@ -12,7 +12,7 @@
   - `Ord`
   - `Hash`
 
-## v0.1.0 (2024-11-22)
+## v0.1.0 (2024-11-21)
 
 Initial release of Jetted. Approximately equivalent to `jtd-codegen` v0.5.0.
 
