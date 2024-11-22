@@ -5,7 +5,8 @@ use serde_json::Value;
 use std::collections::{BTreeMap, BTreeSet};
 use std::io::Write;
 
-const TRAITS: &str = "#[derive(Serialize, Deserialize, Debug, Clone)]";
+const TRAITS: &str =
+    "#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]";
 
 lazy_static! {
     static ref KEYWORDS: BTreeSet<String> = include_str!("keywords")
@@ -20,7 +21,7 @@ lazy_static! {
     static ref FIELD_NAMING_CONVENTION: Box<dyn inflect::Inflector + Send + Sync> =
         Box::new(inflect::KeywordAvoidingInflector::new(
             KEYWORDS.clone(),
-            inflect::TailInflector::new(inflect::Case::camel_case())
+            inflect::TailInflector::new(inflect::Case::snake_case())
         ));
     static ref ENUM_MEMBER_NAMING_CONVENTION: Box<dyn inflect::Inflector + Send + Sync> =
         Box::new(inflect::KeywordAvoidingInflector::new(
