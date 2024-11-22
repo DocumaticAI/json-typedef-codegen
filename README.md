@@ -14,6 +14,15 @@ under the MIT license.
 
 We'd like to thank the original authors of `jtd-codegen` for their work on this project.
 
+## Differences from `jtd-codegen`
+
+### Rust
+
+- Added additional traits to generated Rust types to support cloning, equivalence, ordering, etc.
+- Changed field names to be snake_case instead of camelCase.
+
+## What is `jetted`?
+
 `jetted` is a CLI tool that generates code bindings in many different
 programming languages from JSON Typedef schemas. For example, from this JSON
 Typedef schema:
