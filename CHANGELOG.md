@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.1 (2024-12-09)
+
+- Add new Linux targets
+  - `aarch64-unknown-linux-gnu`
+  - `aarch64-unknown-linux-musl`
+
 ## v0.2.0 (2024-11-22)
 
 ### Breaking Changes
